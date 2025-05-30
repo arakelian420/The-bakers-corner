@@ -56,4 +56,3 @@ You can start editing the main page by modifying [`app/page.tsx`](app/page.tsx:1
 - `npm run dev`: Starts the development server with Turbopack.
 - `npm run build`: Builds the application for production.
 - `npm run start`: Starts a production server.
-- `npm run lint`: Lints the codebase using Next.js's ESLint configuration.
