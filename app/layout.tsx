@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Sweet Delights Bakery",
   description: "Artisanal breads, pastries, and cakes made with love and the finest ingredients.",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({

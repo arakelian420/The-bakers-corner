@@ -1,44 +1,17 @@
-"use client";
-
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Menu,
-  X,
-} from "lucide-react";
+import Image from "next/image"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, Clock } from "lucide-react"
 
 export default function Home() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMobileMenuOpen(false); // Close mobile menu after clicking
-  };
-
   return (
     <div className="flex min-h-[100dvh] flex-col">
       {/* Header */}
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto flex h-16 items-center justify-between px-6 md:px-8">
+        <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src="/images/logo.png"
+              src="/images/bakery-logo.png"
               alt="Sourdough Bakeerd Logo"
               width={40}
               height={40}
@@ -47,103 +20,47 @@ export default function Home() {
             <span className="text-xl font-bold">Sourdough Bakeerd</span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
-            <button
-              onClick={scrollToTop}
-              className="text-sm font-medium hover:text-primary cursor-pointer"
-            >
+            <Link href="#" className="text-sm font-medium hover:text-primary">
               Home
-            </button>
-            <button
-              onClick={() => scrollToSection("features")}
-              className="text-sm font-medium hover:text-primary cursor-pointer"
-            >
+            </Link>
+            <Link href="#features" className="text-sm font-medium hover:text-primary">
               Our Specialties
-            </button>
-            <button
-              onClick={() => scrollToSection("testimonials")}
-              className="text-sm font-medium hover:text-primary cursor-pointer"
-            >
+            </Link>
+            <Link href="#testimonials" className="text-sm font-medium hover:text-primary">
               Testimonials
-            </button>
-            <button
-              onClick={() => scrollToSection("pricing")}
-              className="text-sm font-medium hover:text-primary cursor-pointer"
-            >
+            </Link>
+            <Link href="#pricing" className="text-sm font-medium hover:text-primary">
               Menu
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="text-sm font-medium hover:text-primary cursor-pointer"
-            >
+            </Link>
+            <Link href="#contact" className="text-sm font-medium hover:text-primary">
               Contact
-            </button>
+            </Link>
           </nav>
           <div className="flex items-center gap-4">
-            <Button asChild className="hidden md:inline-flex mx-auto">
-              <button onClick={() => scrollToSection("contact")}>
-                Order Now
-              </button>
+            <Button asChild className="hidden md:inline-flex">
+              <Link href="#contact">Order Now</Link>
             </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
+            <Button variant="outline" size="icon" className="md:hidden">
               <span className="sr-only">Toggle menu</span>
-              {isMobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-5 w-5"
+              >
+                <line x1="4" x2="20" y1="12" y2="12" />
+                <line x1="4" x2="20" y1="6" y2="6" />
+                <line x1="4" x2="20" y1="18" y2="18" />
+              </svg>
             </Button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden border-t bg-background/95 backdrop-blur">
-            <div className="container mx-auto py-4 space-y-4 px-6">
-              <button
-                onClick={scrollToTop}
-                className="block w-full flex justify-center items-center text-sm font-medium hover:text-primary py-2"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => scrollToSection("features")}
-                className="block w-full flex justify-center items-center text-sm font-medium hover:text-primary py-2"
-              >
-                Our Specialties
-              </button>
-              <button
-                onClick={() => scrollToSection("testimonials")}
-                className="block w-full flex justify-center items-center text-sm font-medium hover:text-primary py-2"
-              >
-                Testimonials
-              </button>
-              <button
-                onClick={() => scrollToSection("pricing")}
-                className="block w-full flex justify-center items-center text-sm font-medium hover:text-primary py-2"
-              >
-                Menu
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="block w-full flex justify-center items-center text-sm font-medium hover:text-primary py-2"
-              >
-                Contact
-              </button>
-              <Button
-                size="lg"
-                className="mt-4 w-full flex justify-center items-center"
-                onClick={() => scrollToSection("contact")}
-              >
-                Order Now
-              </Button>
-            </div>
-          </div>
-        )}
       </header>
 
       <main className="flex-1">
@@ -151,34 +68,29 @@ export default function Home() {
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 relative">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/bento.jpg"
+              src="/images/cupcakes-hero.png"
               alt="Colorful decorated cupcakes"
               fill
               className="object-cover brightness-[0.7]"
               priority
             />
           </div>
-          <div className="container mx-auto px-6 md:px-8 relative z-10">
+          <div className="container px-4 md:px-6 relative z-10">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="bg-background/80 backdrop-blur-sm p-8 rounded-lg max-w-3xl">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
                   Freshly Baked Happiness Every Day
                 </h1>
                 <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl mt-4">
-                  Artisanal breads, pastries, and cakes made with love and the
-                  finest ingredients. Taste the difference of handcrafted
-                  baking.
+                  Artisanal breads, pastries, and cakes made with love and the finest ingredients. Taste the difference
+                  of handcrafted baking.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-                  <Button size="lg" onClick={() => scrollToSection("pricing")}>
-                    View Our Menu
+                  <Button size="lg" asChild>
+                    <Link href="#pricing">View Our Menu</Link>
                   </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    onClick={() => scrollToSection("contact")}
-                  >
-                    Visit Us Today
+                  <Button size="lg" variant="outline" asChild>
+                    <Link href="#contact">Visit Us Today</Link>
                   </Button>
                 </div>
               </div>
@@ -187,22 +99,16 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section
-          id="features"
-          className="w-full py-12 md:py-24 lg:py-32 bg-muted/50"
-        >
-          <div className="container mx-auto px-6 md:px-8">
+        <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
+          <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
                   Our Specialties
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                  What Makes Our Bakery Special
-                </h2>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">What Makes Our Bakery Special</h2>
                 <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                  We take pride in our craft and commitment to quality in every
-                  bite.
+                  We take pride in our craft and commitment to quality in every bite.
                 </p>
               </div>
             </div>
@@ -210,7 +116,7 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4 rounded-lg border bg-background p-6 shadow-sm">
                 <div className="mx-auto rounded-lg overflow-hidden">
                   <Image
-                    src="/images/Artisanal_Breads.jpg"
+                    src="/images/artisanal-breads.jpeg"
                     alt="Variety of artisanal breads including baguettes, sourdough, and seeded breads"
                     width={300}
                     height={200}
@@ -220,15 +126,15 @@ export default function Home() {
                 <div className="space-y-2 text-center">
                   <h3 className="text-xl font-bold">Artisanal Breads</h3>
                   <p className="text-muted-foreground">
-                    Handcrafted sourdough, baguettes, and specialty breads made
-                    with traditional techniques and slow fermentation.
+                    Handcrafted sourdough, baguettes, and specialty breads made with traditional techniques and slow
+                    fermentation.
                   </p>
                 </div>
               </div>
               <div className="flex flex-col justify-center space-y-4 rounded-lg border bg-background p-6 shadow-sm">
                 <div className="mx-auto rounded-lg overflow-hidden">
                   <Image
-                    src="/images/Delicious_Pastries.avif"
+                    src="/images/delicious-pastries.avif"
                     alt="Assortment of fresh pastries including croissants and Danish pastries"
                     width={300}
                     height={200}
@@ -238,15 +144,15 @@ export default function Home() {
                 <div className="space-y-2 text-center">
                   <h3 className="text-xl font-bold">Delicious Pastries</h3>
                   <p className="text-muted-foreground">
-                    Flaky croissants, Danish pastries, and sweet treats made
-                    fresh daily with European butter and local ingredients.
+                    Flaky croissants, Danish pastries, and sweet treats made fresh daily with European butter and local
+                    ingredients.
                   </p>
                 </div>
               </div>
               <div className="flex flex-col justify-center space-y-4 rounded-lg border bg-background p-6 shadow-sm">
                 <div className="mx-auto rounded-lg overflow-hidden">
                   <Image
-                    src="/images/cake3.jpg"
+                    src="/images/purple-cake.webp"
                     alt="Vibrant purple and blue layered cake with macarons"
                     width={300}
                     height={200}
@@ -256,8 +162,8 @@ export default function Home() {
                 <div className="space-y-2 text-center">
                   <h3 className="text-xl font-bold">Custom Cakes</h3>
                   <p className="text-muted-foreground">
-                    Beautiful, personalized cakes for all occasions, crafted
-                    with artistic flair and premium ingredients.
+                    Beautiful, personalized cakes for all occasions, crafted with artistic flair and premium
+                    ingredients.
                   </p>
                 </div>
               </div>
@@ -267,18 +173,15 @@ export default function Home() {
 
         {/* Testimonials Section */}
         <section id="testimonials" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container mx-auto px-6 md:px-8">
+          <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
                   Testimonials
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                  What Our Customers Say
-                </h2>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">What Our Customers Say</h2>
                 <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                  Don't just take our word for it. Here's what our happy
-                  customers have to say.
+                  Don't just take our word for it. Here's what our happy customers have to say.
                 </p>
               </div>
             </div>
@@ -301,9 +204,8 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-muted-foreground">
-                    "The sourdough bread from Sweet Delights is the best I've
-                    ever tasted. I drive 30 minutes every weekend just to get a
-                    fresh loaf!"
+                    "The sourdough bread from Sweet Delights is the best I've ever tasted. I drive 30 minutes every
+                    weekend just to get a fresh loaf!"
                   </p>
                 </div>
                 <div className="mt-6 flex items-center">
@@ -316,9 +218,7 @@ export default function Home() {
                   />
                   <div className="ml-4">
                     <p className="text-sm font-medium">Sarah Johnson</p>
-                    <p className="text-sm text-muted-foreground">
-                      Local Resident
-                    </p>
+                    <p className="text-sm text-muted-foreground">Local Resident</p>
                   </div>
                 </div>
               </div>
@@ -340,9 +240,8 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-muted-foreground">
-                    "Sweet Delights made my daughter's wedding cake, and it was
-                    not only beautiful but absolutely delicious. Our guests
-                    couldn't stop raving about it!"
+                    "Sweet Delights made my daughter's wedding cake, and it was not only beautiful but absolutely
+                    delicious. Our guests couldn't stop raving about it!"
                   </p>
                 </div>
                 <div className="mt-6 flex items-center">
@@ -355,9 +254,7 @@ export default function Home() {
                   />
                   <div className="ml-4">
                     <p className="text-sm font-medium">Michael Thompson</p>
-                    <p className="text-sm text-muted-foreground">
-                      Father of the Bride
-                    </p>
+                    <p className="text-sm text-muted-foreground">Father of the Bride</p>
                   </div>
                 </div>
               </div>
@@ -379,9 +276,8 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-muted-foreground">
-                    "As a café owner, I source all my pastries from Sweet
-                    Delights. My customers love them, and the quality and
-                    consistency are unmatched."
+                    "As a café owner, I source all my pastries from Sweet Delights. My customers love them, and the
+                    quality and consistency are unmatched."
                   </p>
                 </div>
                 <div className="mt-6 flex items-center">
@@ -394,9 +290,7 @@ export default function Home() {
                   />
                   <div className="ml-4">
                     <p className="text-sm font-medium">Emily Rodriguez</p>
-                    <p className="text-sm text-muted-foreground">
-                      Local Café Owner
-                    </p>
+                    <p className="text-sm text-muted-foreground">Local Café Owner</p>
                   </div>
                 </div>
               </div>
@@ -405,19 +299,14 @@ export default function Home() {
         </section>
 
         {/* Pricing Section */}
-        <section
-          id="pricing"
-          className="w-full py-12 md:py-24 lg:py-32 bg-muted/50"
-        >
-          <div className="container mx-auto px-6 md:px-8">
+        <section id="pricing" className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
+          <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
                   Our Menu
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                  Fresh From Our Ovens
-                </h2>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Fresh From Our Ovens</h2>
                 <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
                   Explore our selection of freshly baked goods, available daily.
                 </p>
@@ -427,9 +316,7 @@ export default function Home() {
               <div className="flex flex-col rounded-lg border bg-background p-6 shadow-sm">
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold">Artisanal Breads</h3>
-                  <p className="text-muted-foreground">
-                    Our signature handcrafted breads
-                  </p>
+                  <p className="text-muted-foreground">Our signature handcrafted breads</p>
                 </div>
                 <div className="mt-6 space-y-4">
                   <div className="flex items-center justify-between">
@@ -454,20 +341,15 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-6 pt-6 border-t">
-                  <Button
-                    className="w-full"
-                    onClick={() => scrollToSection("contact")}
-                  >
-                    Order Now
+                  <Button className="w-full" asChild>
+                    <Link href="#contact">Order Now</Link>
                   </Button>
                 </div>
               </div>
               <div className="flex flex-col rounded-lg border bg-background p-6 shadow-sm">
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold">Pastries & Sweets</h3>
-                  <p className="text-muted-foreground">
-                    Delightful treats for any time of day
-                  </p>
+                  <p className="text-muted-foreground">Delightful treats for any time of day</p>
                 </div>
                 <div className="mt-6 space-y-4">
                   <div className="flex items-center justify-between">
@@ -492,20 +374,15 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-6 pt-6 border-t">
-                  <Button
-                    className="w-full"
-                    onClick={() => scrollToSection("contact")}
-                  >
-                    Order Now
+                  <Button className="w-full" asChild>
+                    <Link href="#contact">Order Now</Link>
                   </Button>
                 </div>
               </div>
               <div className="flex flex-col rounded-lg border bg-background p-6 shadow-sm">
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold">Specialty Cakes</h3>
-                  <p className="text-muted-foreground">
-                    Custom cakes for special occasions
-                  </p>
+                  <p className="text-muted-foreground">Custom cakes for special occasions</p>
                 </div>
                 <div className="mt-6 space-y-4">
                   <div className="flex items-center justify-between">
@@ -530,11 +407,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-6 pt-6 border-t">
-                  <Button
-                    className="w-full"
-                    onClick={() => scrollToSection("contact")}
-                  >
-                    Order Now
+                  <Button className="w-full" asChild>
+                    <Link href="#contact">Order Now</Link>
                   </Button>
                 </div>
               </div>
@@ -544,32 +418,27 @@ export default function Home() {
 
         {/* CTA Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
-          <div className="container mx-auto px-6 md:px-8">
+          <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
                   Ready to Experience Our Baked Goods?
                 </h2>
                 <p className="mx-auto max-w-[700px] md:text-xl">
-                  Visit our bakery today or place an order for pickup or local
-                  delivery.
+                  Visit our bakery today or place an order for pickup or local delivery.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  variant="secondary"
-                  onClick={() => scrollToSection("contact")}
-                >
-                  Visit Our Bakery
+                <Button size="lg" variant="secondary" asChild>
+                  <Link href="#contact">Visit Our Bakery</Link>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
                   className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-                  onClick={() => scrollToSection("contact")}
+                  asChild
                 >
-                  Place an Order
+                  <Link href="#contact">Place an Order</Link>
                 </Button>
               </div>
             </div>
@@ -578,18 +447,15 @@ export default function Home() {
 
         {/* Contact Section */}
         <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container mx-auto px-6 md:px-8">
+          <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
                   Contact Us
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                  Get in Touch
-                </h2>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Get in Touch</h2>
                 <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                  We'd love to hear from you. Visit us, call us, or send us a
-                  message.
+                  We'd love to hear from you. Visit us, call us, or send us a message.
                 </p>
               </div>
             </div>
@@ -599,9 +465,7 @@ export default function Home() {
                   <MapPin className="h-6 w-6 text-primary" />
                   <div>
                     <h3 className="font-medium">Visit Us</h3>
-                    <p className="text-muted-foreground">
-                      123 Main Street, Bakerytown, BT 12345
-                    </p>
+                    <p className="text-muted-foreground">123 Main Street, Bakerytown, BT 12345</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -615,9 +479,7 @@ export default function Home() {
                   <Mail className="h-6 w-6 text-primary" />
                   <div>
                     <h3 className="font-medium">Email Us</h3>
-                    <p className="text-muted-foreground">
-                      hello@sweetdelights.com
-                    </p>
+                    <p className="text-muted-foreground">hello@sweetdelights.com</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -631,24 +493,15 @@ export default function Home() {
                 <div className="pt-4">
                   <h3 className="font-medium mb-2">Follow Us</h3>
                   <div className="flex space-x-4">
-                    <Link
-                      href="#"
-                      className="rounded-full bg-muted p-2 text-muted-foreground hover:text-primary"
-                    >
+                    <Link href="#" className="rounded-full bg-muted p-2 text-muted-foreground hover:text-primary">
                       <Facebook className="h-5 w-5" />
                       <span className="sr-only">Facebook</span>
                     </Link>
-                    <Link
-                      href="#"
-                      className="rounded-full bg-muted p-2 text-muted-foreground hover:text-primary"
-                    >
+                    <Link href="#" className="rounded-full bg-muted p-2 text-muted-foreground hover:text-primary">
                       <Instagram className="h-5 w-5" />
                       <span className="sr-only">Instagram</span>
                     </Link>
-                    <Link
-                      href="#"
-                      className="rounded-full bg-muted p-2 text-muted-foreground hover:text-primary"
-                    >
+                    <Link href="#" className="rounded-full bg-muted p-2 text-muted-foreground hover:text-primary">
                       <Twitter className="h-5 w-5" />
                       <span className="sr-only">Twitter</span>
                     </Link>
@@ -725,10 +578,10 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="w-full border-t py-6">
-        <div className="container mx-auto flex flex-col items-center justify-between gap-4 md:flex-row px-6 md:px-8">
+        <div className="container flex flex-col items-center justify-between gap-4 md:flex-row px-4 md:px-6">
           <div className="flex items-center gap-2">
             <Image
-              src="/images/logo.png"
+              src="/images/bakery-logo.png"
               alt="Sourdough Bakeerd Logo"
               width={40}
               height={40}
@@ -737,31 +590,21 @@ export default function Home() {
             <span className="text-xl font-bold">Sourdough Bakeerd</span>
           </div>
           <p className="text-center text-sm text-muted-foreground md:text-left">
-            &copy; {new Date().getFullYear()} Sourdough Bakeerd Bakery. All
-            rights reserved.
+            &copy; {new Date().getFullYear()} Sourdough Bakeerd Bakery. All rights reserved.
           </p>
           <div className="flex gap-4">
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:underline"
-            >
+            <Link href="#" className="text-sm text-muted-foreground hover:underline">
               Privacy Policy
             </Link>
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:underline"
-            >
+            <Link href="#" className="text-sm text-muted-foreground hover:underline">
               Terms of Service
             </Link>
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:underline"
-            >
+            <Link href="#" className="text-sm text-muted-foreground hover:underline">
               Accessibility
             </Link>
           </div>
         </div>
       </footer>
     </div>
-  );
+  )
 }
